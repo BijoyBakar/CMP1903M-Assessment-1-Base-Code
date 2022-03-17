@@ -17,12 +17,14 @@ namespace CMP1903M_Assessment_1_Base_Code
             Console.WriteLine("Please pick one of the following options");
             Console.WriteLine("1) Manual text analyser");
             Console.WriteLine("2) Analyse from file");
-            string userinput = Console.ReadLine();
-            if (userinput == "1")
+            string userchoice = Console.ReadLine();
+            if (userchoice == "1")
             {
+                Input userInput = new Input();
+                userInput.manualTextInput();
 
             }
-            else if (userinput == "2")
+            else if (userchoice == "2")
             {
 
             }
@@ -34,7 +36,6 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             //Create 'Input' object
             //Get either manually entered text, or text from a file
-
 
             //Create an 'Analyse' object
             //Pass the text input to the 'analyseText' method
