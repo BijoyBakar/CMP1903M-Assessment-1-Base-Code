@@ -23,6 +23,8 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             Console.WriteLine("Please enter the text you would like analysed: ");
             text = Console.ReadLine();
+            Analyse statistics = new Analyse();
+            statistics.analyseText(text);
             return text;
         }
 
@@ -30,14 +32,11 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: string (the file path)
         //Returns: string
         //Gets text input from a .txt file
-        /// <summary>
-        /// first attempt
-        /// </summary>/Users/bijoybakar/Desktop/OOP\ Assignment\ 17th/CMP1903M\ Assessment\ 1\ Base\ Code/CMP1903M\ Assessment\ 1\ Base\ Code/Assignmenttextfile.txt
-        /// <param name="fileName"></param>
-        /// <returns></returns>
+
         
         public string fileTextInput(string fileName) //harry.txt
         {
+            string Error = ("Incorrect file, please try again");
             
             string file = File.ReadAllText(@$"../../../../{fileName}");
             Console.WriteLine(file);
