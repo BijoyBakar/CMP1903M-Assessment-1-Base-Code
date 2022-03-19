@@ -1,5 +1,6 @@
 ﻿//Base code project for CMP1903M Assessment 1
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             Console.WriteLine("1) Manual text analyser");
             Console.WriteLine("2) Analyse from file");
             string userchoice = Console.ReadLine();
+
             if (userchoice == "1")
             {
                 Input userInput = new Input();
@@ -26,8 +28,13 @@ namespace CMP1903M_Assessment_1_Base_Code
             }
             else if (userchoice == "2")
             {
-
+                Input userInput = new Input();
+                Console.WriteLine("please enter the filename");
+                string filename = Console.ReadLine();
+                userInput.fileTextInput(filename);
+                
             }
+
             else
             {
                 Console.WriteLine("Invalid input");
