@@ -14,6 +14,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             //Local list of integers to hold the first five measurements of the text
             List<int> parameters = new List<int>();
+            string text = "hello";
 
             Console.WriteLine("Please pick one of the following options");
             Console.WriteLine("1) Manual text analyser");
@@ -23,15 +24,15 @@ namespace CMP1903M_Assessment_1_Base_Code
             if (userchoice == "1")
             {
                 Input userInput = new Input();
-                userInput.manualTextInput();
+                text = userInput.manualTextInput();
 
             }
             else if (userchoice == "2")
             {
                 Input userInput = new Input();
                 Console.WriteLine("please enter the filename");
-                string filename = Console.ReadLine();
-                userInput.fileTextInput(filename);
+                string filename = Console.ReadLine(); 
+                text = userInput.fileTextInput(filename);
                 
             }
 
@@ -43,7 +44,9 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             //Create 'Input' object
             //Get either manually entered text, or text from a file
-
+            
+            Analyse statistics = new Analyse();
+            statistics.analyseText(text);
             //Create an 'Analyse' object
             //Pass the text input to the 'analyseText' method
 
@@ -55,8 +58,10 @@ namespace CMP1903M_Assessment_1_Base_Code
 
 
             //TO ADD: Get the frequency of individual letters?
+            Analyse Letters = new Analyse();
+            Letters.FrequencyLetters(text);
 
-           
+
         }
         
         

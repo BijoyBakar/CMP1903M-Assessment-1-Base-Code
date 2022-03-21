@@ -39,7 +39,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             string Error = ("Incorrect file, please try again");
             
             string file = File.ReadAllText(@$"../../../../{fileName}");
-            Console.WriteLine(file);
+            //Console.WriteLine(file);
             return file;
         }
 
