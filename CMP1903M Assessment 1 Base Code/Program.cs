@@ -47,7 +47,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             Analyse statistics = new Analyse();
             statistics.analyseText(text);
 
-            Console.WriteLine(" ");
+            Console.WriteLine("  ");
             
             //Report the results of the analysis
             Report LongWords = new Report();

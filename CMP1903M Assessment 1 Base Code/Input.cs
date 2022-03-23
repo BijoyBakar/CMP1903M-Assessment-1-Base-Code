@@ -23,8 +23,6 @@ namespace CMP1903M_Assessment_1_Base_Code
         {
             Console.WriteLine("Please enter the text you would like analysed: ");
             text = Console.ReadLine();
-            Analyse statistics = new Analyse();
-            statistics.analyseText(text);
             return text;
         }
 

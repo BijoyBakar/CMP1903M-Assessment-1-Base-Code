@@ -14,18 +14,22 @@ namespace CMP1903M_Assessment_1_Base_Code
         public void outputConsole(string text)
         {
             string [] words = text.Split(new[] { " " },StringSplitOptions.None);
-            string word = "";
+            List<string> word = new List<string>();
             int length = 7;
             Console.WriteLine("The long words are : ");
             foreach (string s in words.Distinct())
             {
                 if (s.Length > length)
                 {
+                    
+                    
+                    word.Add(s);
                     Console.WriteLine(s);
+                    
                 }
-                
+
             }
-            
+            File.WriteAllLines(@$"../../../../NewFile.txt",word);
 
 
         }
