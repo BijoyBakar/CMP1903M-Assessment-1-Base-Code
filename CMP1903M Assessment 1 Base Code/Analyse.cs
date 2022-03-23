@@ -14,7 +14,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: string
         //Returns: list of integers
         //Calculates and returns an analysis of the text
-        char [] sentence = {'.'};
+        char [] sentence = {'.','?','!',';'};
         char[] VowelsLowerCase = {'a','e','i','o','u'};
         char[] VowelUpperCase = {'A','E','I','O','U'};
         char[] ConsonantsLowerCase = {'b', 'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'};
