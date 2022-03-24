@@ -109,6 +109,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         
         
         
+        
         public string FrequencyLetters(string text)
         {
             Console.WriteLine("Would like you view letter frequency ?");
