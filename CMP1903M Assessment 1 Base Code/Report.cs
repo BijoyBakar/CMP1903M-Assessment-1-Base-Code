@@ -5,6 +5,8 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace CMP1903M_Assessment_1_Base_Code
 {
     class Report
@@ -17,23 +19,30 @@ namespace CMP1903M_Assessment_1_Base_Code
             List<string> word = new List<string>();
             int length = 7;
             Console.WriteLine("The long words are : ");
+
             foreach (string s in words.Distinct())
             {
-                if (s.Length > length)
+                string longword=(s.Trim( new Char[] { ' ', '*', '.',','} ));
+                if (longword.Length > length)
                 {
-                    
-                    
-                    word.Add(s);
-                    Console.WriteLine(s);
-                    
+                    word.Add(longword);
+                    Console.WriteLine(longword);
+
                 }
 
+
             }
+
             File.WriteAllLines(@$"../../../../NewFile.txt",word);
+            Console.WriteLine(" ");
+            Console.WriteLine("The long words have been added to NewFile.txt file");
+
+        }
+
 
 
         }
         
 
-    }
+    
 }
