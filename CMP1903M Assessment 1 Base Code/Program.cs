@@ -52,7 +52,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             //Report the results of the analysis
             Report LongWords = new Report();
             LongWords.outputConsole(text);
-
+    
             Console.WriteLine("");
             
             //TO ADD: Get the frequency of individual letters?
