@@ -25,7 +25,7 @@ namespace CMP1903M_Assessment_1_Base_Code
             text = Console.ReadLine();
             return text;
         }
-
+        
         //Method: fileTextInput
         //Arguments: string (the file path)
         //Returns: string
