@@ -14,17 +14,18 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: string
         //Returns: list of integers
         //Calculates and returns an analysis of the text
-        char [] sentence = {'.','?','!',';'};
+        char [] sentence = {'.','?','!'};
         char[] VowelsLowerCase = {'a','e','i','o','u'};
-        char[] VowelUpperCase = {'A','E','I','O','U'};
-        char[] ConsonantsLowerCase = {'b', 'b', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'};
+        char[] VowelsUpperCase = {'A','E','I','O','U'};
+        char[] ConsonantsLowerCase = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'};
         char[] ConsonantsUpperCase = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Z', 'W', 'Y'};
-        char[] lettersLowerCase= {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-        char[] lettersUpperCase = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+
 
         int SentenceCount = 0;
-        int VowelCount = 0;
-        int ConsonantsCount = 0;
+        int uppervowelcount = 0;
+        int lowervowelcount = 0;
+        int lowerconsonantcount = 0;
+        int upperconsonantcount = 0;
         int LettersLowerCount = 0;
         int LettersUpperCount = 0;
         int TotalCharacters;
@@ -54,38 +55,27 @@ namespace CMP1903M_Assessment_1_Base_Code
                 }
                 if (VowelsLowerCase.Contains(i))
                 {
-                    VowelCount++;
+                    lowervowelcount++;
                     
                 }
-                if (VowelUpperCase.Contains(i))
+                if (VowelsUpperCase.Contains(i))
                 {
-                    VowelCount++;
+                    uppervowelcount++;
                     
                 }
                 if (ConsonantsLowerCase.Contains(i))
                 {
-                    ConsonantsCount++;
+                    lowerconsonantcount++;
                     
                 }
                 if (ConsonantsUpperCase.Contains(i))
                 {
-                    ConsonantsCount++;
-                    
-                }
-                if (lettersLowerCase.Contains(i))
-                {
-                    LettersLowerCount++;
-                    
-                }
-                if (lettersUpperCase.Contains(i))
-                {
-                    LettersUpperCount++;
+                    upperconsonantcount++;
                     
                 }
 
-                TotalCharacters = (LettersUpperCount + LettersLowerCount + VowelCount + ConsonantsCount + SentenceCount);
-
-                
+                TotalCharacters = lowervowelcount + lowerconsonantcount + uppervowelcount + upperconsonantcount;
+               
                 
 
 
@@ -93,10 +83,10 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             }
             Console.WriteLine("Number of sentences entered = " + SentenceCount);
-            Console.WriteLine("Number of vowels = " + VowelCount);
-            Console.WriteLine("Number of consonants = " + ConsonantsCount);
-            Console.WriteLine("Number of upper case letters = "+ LettersUpperCount);
-            Console.WriteLine("Number of lower case letters = "+LettersLowerCount);
+            Console.WriteLine("Number of vowels = " + (lowervowelcount+uppervowelcount));
+            Console.WriteLine("Number of consonants = " + (lowerconsonantcount+upperconsonantcount));
+            Console.WriteLine("Number of upper case letters = "+ (uppervowelcount+upperconsonantcount));
+            Console.WriteLine("Number of lower case letters = "+(lowervowelcount+lowerconsonantcount));
             Console.WriteLine("Total characters in the sentence is = "+TotalCharacters);
             
             
