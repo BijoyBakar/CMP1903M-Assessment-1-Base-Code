@@ -31,9 +31,9 @@ namespace CMP1903M_Assessment_1_Base_Code
             {
                 Input userInput = new Input();
                 Console.WriteLine("please enter the filename");
-                string filename = Console.ReadLine(); 
+                string filename = Console.ReadLine();
                 text = userInput.fileTextInput(filename);
-                
+
             }
 
             else
@@ -45,26 +45,31 @@ namespace CMP1903M_Assessment_1_Base_Code
             //Create 'Input' object
             //Get either manually entered text, or text from a file
             Analyse statistics = new Analyse();
-            statistics.analyseText(text);
+            statistics.AnalyseText(text);
 
             Console.WriteLine("  ");
-            
+
             //Report the results of the analysis
             Report LongWords = new Report();
             LongWords.outputConsole(text);
-    
-            Console.WriteLine("");
-            
-            //TO ADD: Get the frequency of individual letters?
-            Analyse Letters = new Analyse();
-            Letters.FrequencyLetters(text);
 
+            Console.WriteLine("");
+
+            //TO ADD: Get the frequency of individual letters?
+            Console.WriteLine("Would like you view letter frequency ?");
+            Console.WriteLine("1 - Yes");
+            Console.WriteLine("2 - No");
+            string userinput = Console.ReadLine();
+            if (userinput == "1")
+            {
+                statistics.FrequencyLetters(text);
+            }
+            else if (userinput == "2")
+            {
+                Console.WriteLine("Program closed");
+                System.Environment.Exit(1);
+            }
 
         }
-        
-        
-        
-        
-    
     }
 }
