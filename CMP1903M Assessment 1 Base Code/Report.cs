@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,42 +10,48 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_Assessment_1_Base_Code
 {
+    /// <summary>
+    /// This class is responsible for outputting the sentence count etc.. 
+    /// </summary>
     class Report
     {
-        //Handles the reporting of the analysis
-        //Maybe have different methods for different formats of output?
-        public void outputConsole(string text)
+        
+        List<int> Parameters;
+       
+
+        public Report (string text,  List<int> parameters)
         {
-            string [] words = text.Split(new[] { " " },StringSplitOptions.None);
-            List<string> word = new List<string>();
-            int length = 7;
-            Console.WriteLine("The long words are : ");
+            Parameters = parameters;
+            Parameters.ToString();
 
-            foreach (string s in words.Distinct())
+        }
+        
+        public void OutputConsole()
+        {
+            // each of the values for the sentence count etc is printed out along side the values which i have gotten from the analysis file 
+
+            List<string> report = new List<string>()
             {
-                string longword=(s.Trim( new Char[] { ' ', '*', '.',','} ));
-                if (longword.Length > length)
-                {
-                    word.Add(longword);
-                    Console.WriteLine(longword);
-
-                }
-    
-
+                "Number of sentences entered: " + Parameters[0], 
+                "Number of vowels: " + Parameters[1],
+                "Number of consantants: " + Parameters[2],
+                "Number of upper case letters: " + Parameters[3], 
+                "Number of lower case letters: " + Parameters[4], 
+                "Total characters: " + Parameters[5] };
+            foreach(string reports in report)
+            {
+                Console.WriteLine(reports);
             }
-
-            File.WriteAllLines(@$"../../../../NewFile.txt",word);
-            Console.WriteLine(" ");
-            Console.WriteLine("The long words have been added to NewFile.txt file");
-
+           
         }
         
-
-
-
-        }
+    }
     
-        
+    }
 
     
-}
+
+
+
+
+

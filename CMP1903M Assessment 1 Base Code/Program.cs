@@ -8,63 +8,88 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_Assessment_1_Base_Code
 {
+    /// <summary>
+    /// this is the main class which controls the outputting of the other files. Every other file and method is called her and printed out
+    /// </summary>
     class Program
     {
+
         static void Main()
         {
+
             //Local list of integers to hold the first five measurements of the text
             List<int> parameters = new List<int>();
+
             string text = "hello";
-
-            Console.WriteLine("Please pick one of the following options");
-            Console.WriteLine("1) Manual text analyser");
-            Console.WriteLine("2) Analyse from file");
-            string userchoice = Console.ReadLine();
-
-            if (userchoice == "1")
+            // while loops has been used for error handling purpose to make the user re enter if they press wrong option
+            while (true)
             {
-                Input userInput = new Input();
-                text = userInput.manualTextInput();
+                // user is giving options
+                Console.WriteLine("Please pick one of the following options");
+                Console.WriteLine("1) Manual text analyser");
+                Console.WriteLine("2) Analyse from file");
+                Console.WriteLine("3) Exit program");
+                string userchoice = Console.ReadLine();
+                // if 1 then goes directly to manual text input
+                if (userchoice == "1")
+                {
+                    Input userInput = new Input();
+                    text = userInput.manualTextInput();
 
-            }
-            else if (userchoice == "2")
-            {
-                Input userInput = new Input();
-                Console.WriteLine("please enter the filename");
-                string filename = Console.ReadLine(); 
-                text = userInput.fileTextInput(filename);
+                }
+                // if 2 then goes directly to file input
+                else if (userchoice == "2")
+                {
+                    Input userInput = new Input();
+                    Console.WriteLine("please enter the filename");
+                    string filename = Console.ReadLine();
+                    text = userInput.fileTextInput(filename);
+
+                }
+                // if 3 makes the user exit the program
+                else if (userchoice=="3")
+                {
+                    Console.WriteLine("Program closed");
+                    break;
+                }
+                // blank space makes the user re enter the value
+                else if (userchoice == "")
+                {
+                    Console.WriteLine("Invalid input");
+                    continue;
+                }
+                // anything else also makes them re enter the value 
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                    continue;
+                    
+                }
                 
-            }
-
-            else
-            {
-                Console.WriteLine("Invalid input");
-            }
-
-
-            //Create 'Input' object
-            //Get either manually entered text, or text from a file
-            Analyse statistics = new Analyse();
-            statistics.analyseText(text);
-
-            Console.WriteLine("  ");
+                Analyse analyse = new Analyse();
+                //Pass the text input to the 'analyseText' method
+                parameters = analyse.analyseText(text);
             
-            //Report the results of the analysis
-            Report LongWords = new Report();
-            LongWords.outputConsole(text);
-    
-            Console.WriteLine("");
-            
-            //TO ADD: Get the frequency of individual letters?
-            Analyse Letters = new Analyse();
-            Letters.FrequencyLetters(text);
+                //Report the results of the analysis
+                Report report = new Report(text,parameters);
+                report.OutputConsole();
+                
+                Console.WriteLine("  ");
 
+                //prints out the long words from analysis 
+                Analyse LongWords = new Analyse();
+                LongWords.Longwords(text);
+
+                Console.WriteLine("");
+
+                //Gets the frequency of individual letters from analysis 
+                Analyse Letters = new Analyse();
+                Letters.FrequencyLetters(text);
+                
+ 
+
+            }
 
         }
-        
-        
-        
-        
-    
     }
 }

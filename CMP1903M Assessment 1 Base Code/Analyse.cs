@@ -7,8 +7,10 @@ using System.Xml.Schema;
 
 namespace CMP1903M_Assessment_1_Base_Code
 {
+    
     public class Analyse
     {
+        
         //Handles the analysis of text
         //Method: analyseText
         //Arguments: string
@@ -20,53 +22,60 @@ namespace CMP1903M_Assessment_1_Base_Code
         char[] ConsonantsLowerCase = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x', 'z', 'w', 'y'};
         char[] ConsonantsUpperCase = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Z', 'W', 'Y'};
 
-
+        // they as used to store the count of different values 
         int SentenceCount = 0;
         int uppervowelcount = 0;
         int lowervowelcount = 0;
         int lowerconsonantcount = 0;
         int upperconsonantcount = 0;
-        int LettersLowerCount = 0;
-        int LettersUpperCount = 0;
         int TotalCharacters;
         
+        /// <summary>
+        /// This is responsible handling the basic analysis whihc includes things like sentence count, vowel count.
+        /// these are put in a list so that they can be accessed in report
+        /// </summary>
+        
+        //List<int> values = new List<int>();
+        //Initialise all the values in the list to '0'
+        
+        List<int> values = new List<int>();
         public List<int> analyseText(string input)
         {
             
-            //List of integers to hold the first five measurements:
-            //1. Number of sentences
-            //2. Number of vowels
-            //3. Number of consonants
-            //4. Number of upper case letters
-            //5. Number of lower case letters
-            List<int> values = new List<int>();
-            //Initialise all the values in the list to '0'
-            for(int i = 0; i<5; i++)
+            
+            for(int i = 0; i<6; i++)
             {
                 values.Add(0);
             }
             
             foreach (char i in input)
+                //1. Number of sentences
             {
                 if (sentence.Contains (i))
                 {
                     SentenceCount++;
                     
+
                 }
+                //2. Number of vowels
                 if (VowelsLowerCase.Contains(i))
                 {
                     lowervowelcount++;
-                    
+
                 }
+                
                 if (VowelsUpperCase.Contains(i))
                 {
                     uppervowelcount++;
                     
+
                 }
+                //3. Number of consonants
                 if (ConsonantsLowerCase.Contains(i))
                 {
                     lowerconsonantcount++;
                     
+
                 }
                 if (ConsonantsUpperCase.Contains(i))
                 {
@@ -75,40 +84,42 @@ namespace CMP1903M_Assessment_1_Base_Code
                 }
 
                 TotalCharacters = lowervowelcount + lowerconsonantcount + uppervowelcount + upperconsonantcount;
-               
                 
-
-
-
-
             }
-            Console.WriteLine("Number of sentences entered = " + SentenceCount);
-            Console.WriteLine("Number of vowels = " + (lowervowelcount+uppervowelcount));
-            Console.WriteLine("Number of consonants = " + (lowerconsonantcount+upperconsonantcount));
-            Console.WriteLine("Number of upper case letters = "+ (uppervowelcount+upperconsonantcount));
-            Console.WriteLine("Number of lower case letters = "+(lowervowelcount+lowerconsonantcount));
-            Console.WriteLine("Total characters in the sentence is = "+TotalCharacters);
+            // assigning the values to a parameter so that they can be accessed in report 
+
+            values[0] = SentenceCount;
+            values[1] = lowervowelcount + uppervowelcount;
+            values[2] = lowerconsonantcount + upperconsonantcount;
+            values[3] = upperconsonantcount + uppervowelcount;
+            values[4] = lowerconsonantcount + lowervowelcount;
+            values[5] = TotalCharacters;
             
-            
-    
             return values;
-            
             
             
         }
         
-        
-        
-        
-        public string FrequencyLetters(string text)
+
+
+        /// <summary>
+        /// This method is responsible for the frequency of letters. It looks at how many times a particualr letter appears 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>text</returns>
+
+        public string FrequencyLetters(string text)// text
         {
-            Console.WriteLine("Would like you view letter frequency ?");
+            // user is given the option if they want to view the letter frequency 
+            Console.WriteLine("Would you like to view letter frequency ?");
             Console.WriteLine("1 - Yes");
             Console.WriteLine("2 - No");
             string userinput = Console.ReadLine();
+            // if they press 1 the frequncy is displayed
             if (userinput == "1")
             {
-                string input = text;
+                // the text from the user is converted to all lowercase to make it easier to count the letters 
+                string input = text; //text
                 string LowercaseInput = input.ToLower();
                 char chA = 'a';
                 char chB = 'b';
@@ -137,7 +148,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                 char chY= 'y';
                 char chZ= 'z';
                 
-
+                // counts how many time they appear 
                 int freqA = LowercaseInput.Count(f => (f == chA));
                 int freqB = LowercaseInput.Count(f => (f == chB));
                 int freqC = LowercaseInput.Count(f => (f == chC));
@@ -165,7 +176,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                 int freqY = LowercaseInput.Count(f => (f == chY));
                 int freqZ = LowercaseInput.Count(f => (f == chZ));
 
-
+                // prints out how many times they appear 
                 Console.WriteLine("A = "+freqA);
                 Console.WriteLine("B = "+freqB);
                 Console.WriteLine("C = "+freqC);
@@ -194,20 +205,52 @@ namespace CMP1903M_Assessment_1_Base_Code
                 Console.WriteLine("Z = "+freqZ);
                 
             }
+            // program is closed if press 2 
             else if (userinput == "2")
             {
                 Console.WriteLine("Program closed");
                 System.Environment.Exit(1);
-                
                 
             }
 
 
 
 
+            return text; //text
+        }
+        
+        /// <summary>
+        /// This method is responsible for the long words. Looks at words that are longer than 7 characters or more and stores them
+        /// in a text file. 
+        /// </summary>
+        /// <param name="text"></param>
+        public void Longwords(string text) //text
+        {
+            string [] words = text.Split(new[] { " " },StringSplitOptions.None);
+            List<string> word = new List<string>();
+            int length = 7;
+            Console.WriteLine("The long words are : ");
+            
+            // iterates through the string and makes a distinct which looks only lets the same word appear once 
+            foreach (string s in words.Distinct())
+            {
+                // trims the ending of the word this means punctuations at end of the word is taken out as it should not be included 
+                string longword=(s.Trim( new Char[] { ' ', '*', '.',','} ));
+                if (longword.Length > length)
+                {
+                    word.Add(longword);
+                    Console.WriteLine(longword);
 
+                }
+    
 
-            return text;
+            }
+            // text file is created and all the long words can be found there
+            File.WriteAllLines(@$"../../../../NewFile.txt",word);
+            Console.WriteLine(" ");
+            Console.WriteLine("The long words have been added to NewFile.txt file");
+            
+
         }
         
         
